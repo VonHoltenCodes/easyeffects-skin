@@ -1,0 +1,448 @@
+/* ============================================
+   GLASS FUTURE THEME FOR EASY EFFECTS
+   Clean, Modern, Blue-tinted
+   ============================================ */
+
+/* === GLOBAL WINDOW STYLING === */
+window {
+  background-color: #1a1f2e;
+  color: #d0e1f9;
+  font-family: "Sans", "Liberation Sans", "Arial";
+}
+
+/* Main application background - frosted glass effect */
+.background {
+  background-color: #1a1f2e;
+  background-image:
+    radial-gradient(ellipse at top,
+      rgba(100, 150, 255, 0.1) 0%,
+      rgba(26, 31, 46, 1) 50%),
+    linear-gradient(180deg, #242938 0%, #1a1f2e 100%);
+}
+
+/* === CLEAN TEXT STYLING === */
+label, .title, .subtitle {
+  color: #d0e1f9;
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
+  font-weight: 400;
+  letter-spacing: 0.3px;
+}
+
+/* Headers with glass effect */
+headerbar, .header-bar {
+  background-color: rgba(36, 41, 56, 0.9);
+  background-image: linear-gradient(180deg,
+    rgba(100, 150, 255, 0.15) 0%,
+    rgba(36, 41, 56, 0.9) 100%);
+  color: #d0e1f9;
+  border-bottom: 1px solid rgba(100, 150, 255, 0.3);
+  box-shadow: 0 2px 12px rgba(100, 150, 255, 0.2);
+}
+
+headerbar label, .header-bar label {
+  color: #d0e1f9;
+  text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.6);
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+/* === BUTTONS - GLASS STYLE === */
+button {
+  background-color: rgba(36, 41, 56, 0.8);
+  background-image: linear-gradient(180deg,
+    rgba(100, 150, 255, 0.1) 0%,
+    rgba(36, 41, 56, 0.8) 100%);
+  color: #d0e1f9;
+  border: 1px solid rgba(100, 150, 255, 0.3);
+  border-radius: 4px;
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+button:hover {
+  background-color: rgba(36, 41, 56, 0.9);
+  border-color: rgba(100, 150, 255, 0.5);
+  box-shadow: 0 0 16px rgba(100, 150, 255, 0.3),
+              inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+button:active, button:checked {
+  background-color: rgba(100, 150, 255, 0.3);
+  background-image: linear-gradient(180deg,
+    rgba(100, 150, 255, 0.4) 0%,
+    rgba(100, 150, 255, 0.3) 100%);
+  color: #ffffff;
+  border-color: rgba(100, 150, 255, 0.6);
+  box-shadow: 0 0 20px rgba(100, 150, 255, 0.5),
+              inset 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* === SWITCHES === */
+switch {
+  background-color: rgba(26, 31, 46, 0.8);
+  border: 1px solid rgba(100, 150, 255, 0.3);
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
+switch:checked {
+  background-color: rgba(100, 150, 255, 0.4);
+  background-image: linear-gradient(90deg,
+    rgba(100, 150, 255, 0.4) 0%,
+    rgba(150, 200, 255, 0.5) 100%);
+  box-shadow: 0 0 16px rgba(100, 150, 255, 0.6),
+              inset 0 0 12px rgba(255, 255, 255, 0.2);
+}
+
+switch slider {
+  background-color: rgba(36, 41, 56, 0.9);
+  border: 1px solid rgba(100, 150, 255, 0.4);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+switch:checked slider {
+  background-color: rgba(150, 200, 255, 0.9);
+  box-shadow: 0 0 16px rgba(100, 150, 255, 1),
+              0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+/* === SLIDERS === */
+scale {
+  background-color: transparent;
+}
+
+scale trough {
+  background-color: rgba(26, 31, 46, 0.8);
+  background-image: linear-gradient(90deg,
+    rgba(26, 31, 46, 0.8) 0%,
+    rgba(20, 25, 40, 0.8) 50%,
+    rgba(26, 31, 46, 0.8) 100%);
+  border: 1px solid rgba(100, 150, 255, 0.3);
+  min-height: 8px;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.6);
+}
+
+scale highlight {
+  background-color: rgba(100, 150, 255, 0.5);
+  background-image: linear-gradient(90deg,
+    rgba(100, 150, 255, 0.5) 0%,
+    rgba(150, 200, 255, 0.7) 100%);
+  box-shadow: 0 0 10px rgba(100, 150, 255, 0.7);
+}
+
+scale slider {
+  background-color: rgba(36, 41, 56, 0.9);
+  background-image: linear-gradient(180deg,
+    rgba(100, 150, 255, 0.2) 0%,
+    rgba(36, 41, 56, 0.9) 100%);
+  border: 2px solid rgba(100, 150, 255, 0.5);
+  border-radius: 4px;
+  min-height: 20px;
+  min-width: 20px;
+  box-shadow: 0 0 10px rgba(100, 150, 255, 0.5),
+              inset 0 1px 2px rgba(255, 255, 255, 0.1);
+}
+
+scale slider:hover {
+  border-color: rgba(150, 200, 255, 0.7);
+  box-shadow: 0 0 16px rgba(100, 150, 255, 0.8);
+}
+
+/* === LEVEL METERS === */
+levelbar block,
+progressbar progress {
+  background-color: rgba(100, 150, 255, 0.6);
+  background-image: linear-gradient(90deg,
+    rgba(100, 255, 150, 0.8) 0%,
+    rgba(100, 200, 255, 0.8) 50%,
+    rgba(100, 150, 255, 0.8) 70%,
+    rgba(200, 150, 255, 0.8) 85%,
+    rgba(255, 100, 255, 0.8) 100%);
+  box-shadow: 0 0 12px rgba(100, 150, 255, 0.8);
+  border: none;
+}
+
+levelbar trough,
+progressbar trough {
+  background-color: rgba(20, 25, 40, 0.8);
+  border: 1px solid rgba(100, 150, 255, 0.3);
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.6);
+}
+
+levelbar block.high,
+levelbar block.full {
+  background-color: rgba(255, 100, 255, 0.8);
+  background-image: linear-gradient(90deg,
+    rgba(255, 100, 200, 0.8) 0%,
+    rgba(255, 100, 255, 0.8) 100%);
+  box-shadow: 0 0 16px rgba(255, 100, 255, 0.9);
+}
+
+/* === ENTRY FIELDS === */
+entry {
+  background-color: rgba(20, 25, 40, 0.8);
+  color: #d0e1f9;
+  border: 1px solid rgba(100, 150, 255, 0.3);
+  caret-color: rgba(150, 200, 255, 1);
+  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.6);
+}
+
+entry:focus {
+  border-color: rgba(150, 200, 255, 0.6);
+  box-shadow: 0 0 12px rgba(100, 150, 255, 0.5),
+              inset 0 0 12px rgba(0, 0, 0, 0.6);
+}
+
+/* === SPINBUTTONS === */
+spinbutton {
+  background-color: rgba(20, 25, 40, 0.8);
+  color: #d0e1f9;
+  border: 1px solid rgba(100, 150, 255, 0.3);
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
+  font-family: "Sans";
+  font-weight: 500;
+}
+
+spinbutton button {
+  border-radius: 2px;
+  min-width: 16px;
+}
+
+/* === LISTS AND ROWS === */
+list, listview {
+  background-color: rgba(20, 25, 40, 0.8);
+  border: 1px solid rgba(100, 150, 255, 0.3);
+}
+
+row {
+  background-color: transparent;
+  color: #d0e1f9;
+  border-bottom: 1px solid rgba(100, 150, 255, 0.1);
+}
+
+row:hover {
+  background-color: rgba(36, 41, 56, 0.6);
+  box-shadow: inset 0 0 8px rgba(100, 150, 255, 0.2);
+}
+
+row:selected {
+  background-color: rgba(100, 150, 255, 0.3);
+  color: #ffffff;
+  box-shadow: inset 0 0 12px rgba(100, 150, 255, 0.4);
+}
+
+row label {
+  color: #d0e1f9;
+}
+
+/* === SCROLLBARS === */
+scrollbar {
+  background-color: rgba(20, 25, 40, 0.8);
+  border-left: 1px solid rgba(100, 150, 255, 0.2);
+}
+
+scrollbar slider {
+  background-color: rgba(36, 41, 56, 0.8);
+  border: 1px solid rgba(100, 150, 255, 0.3);
+  min-width: 10px;
+  min-height: 40px;
+}
+
+scrollbar slider:hover {
+  background-color: rgba(50, 60, 80, 0.9);
+  border-color: rgba(100, 150, 255, 0.5);
+}
+
+/* === POPOVER MENUS === */
+popover {
+  background-color: rgba(36, 41, 56, 0.95);
+  border: 1px solid rgba(100, 150, 255, 0.4);
+  box-shadow: 0 4px 20px rgba(100, 150, 255, 0.3);
+}
+
+popover > contents {
+  background-color: transparent;
+}
+
+popover label {
+  color: #d0e1f9;
+}
+
+/* === NOTEBOOK TABS === */
+notebook {
+  background-color: rgba(20, 25, 40, 0.8);
+}
+
+notebook header {
+  background-color: rgba(36, 41, 56, 0.8);
+  border-bottom: 1px solid rgba(100, 150, 255, 0.3);
+}
+
+notebook tab {
+  background-color: rgba(36, 41, 56, 0.6);
+  color: #d0e1f9;
+  border: 1px solid rgba(100, 150, 255, 0.2);
+  border-bottom: none;
+  padding: 8px 16px;
+  border-radius: 4px 4px 0 0;
+}
+
+notebook tab:hover {
+  background-color: rgba(50, 60, 80, 0.7);
+}
+
+notebook tab:checked {
+  background-color: rgba(100, 150, 255, 0.3);
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 0 12px rgba(100, 150, 255, 0.6);
+}
+
+/* === SEPARATORS === */
+separator {
+  background-color: rgba(100, 150, 255, 0.3);
+  min-width: 1px;
+  min-height: 1px;
+  box-shadow: 0 0 4px rgba(100, 150, 255, 0.4);
+}
+
+/* === CHECKBOXES === */
+checkbutton check,
+checkbox {
+  background-color: rgba(20, 25, 40, 0.8);
+  border: 1px solid rgba(100, 150, 255, 0.3);
+  border-radius: 3px;
+  min-width: 16px;
+  min-height: 16px;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.6);
+}
+
+checkbutton:checked check,
+checkbox:checked {
+  background-color: rgba(100, 150, 255, 0.5);
+  background-image: linear-gradient(135deg,
+    rgba(100, 150, 255, 0.6) 0%,
+    rgba(150, 200, 255, 0.7) 100%);
+  border-color: rgba(150, 200, 255, 0.7);
+  box-shadow: 0 0 12px rgba(100, 150, 255, 0.8);
+  -gtk-icon-source: none;
+}
+
+/* === RADIO BUTTONS === */
+radiobutton radio,
+radio {
+  background-color: rgba(20, 25, 40, 0.8);
+  border: 1px solid rgba(100, 150, 255, 0.3);
+  min-width: 16px;
+  min-height: 16px;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.6);
+}
+
+radiobutton:checked radio,
+radio:checked {
+  background-color: rgba(100, 150, 255, 0.5);
+  border-color: rgba(150, 200, 255, 0.7);
+  box-shadow: 0 0 12px rgba(100, 150, 255, 0.8),
+              inset 0 0 4px rgba(0, 0, 0, 0.4);
+}
+
+/* === TOOLTIPS === */
+tooltip {
+  background-color: rgba(36, 41, 56, 0.95);
+  color: #d0e1f9;
+  border: 1px solid rgba(100, 150, 255, 0.4);
+  border-radius: 4px;
+  box-shadow: 0 2px 12px rgba(100, 150, 255, 0.4);
+}
+
+tooltip label {
+  color: #d0e1f9;
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+/* === SPECTRUM ANALYZER === */
+graph, chart, .spectrum {
+  background-color: rgba(20, 25, 40, 0.8);
+  border: 1px solid rgba(100, 150, 255, 0.3);
+  box-shadow: inset 0 0 16px rgba(0, 0, 0, 0.6);
+}
+
+.grid {
+  color: rgba(100, 150, 255, 0.2);
+}
+
+/* === SCROLLED WINDOW === */
+scrolledwindow {
+  background-color: rgba(20, 25, 40, 0.8);
+  border: 1px solid rgba(100, 150, 255, 0.3);
+}
+
+/* === FRAMES AND BORDERS === */
+frame {
+  border: 1px solid rgba(100, 150, 255, 0.3);
+  background-color: transparent;
+}
+
+frame > border {
+  border: 1px solid rgba(100, 150, 255, 0.3);
+}
+
+/* === OVERLAY LABELS === */
+.overlay-label {
+  background-color: rgba(36, 41, 56, 0.9);
+  color: #d0e1f9;
+  border: 1px solid rgba(100, 150, 255, 0.4);
+  text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.7);
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+/* === ACCENT COLOR === */
+.accent {
+  color: rgba(150, 200, 255, 1);
+  background-color: rgba(100, 150, 255, 0.5);
+}
+
+/* === WARNING/ERROR COLORS === */
+.warning {
+  color: rgba(255, 200, 100, 1);
+  text-shadow: 0 0 8px rgba(255, 200, 100, 0.8);
+}
+
+.error {
+  color: rgba(255, 100, 150, 1);
+  text-shadow: 0 0 8px rgba(255, 100, 150, 0.8);
+}
+
+/* === CUSTOM EFFECTS PANELS === */
+.effect-panel {
+  background-color: rgba(20, 25, 40, 0.8);
+  border: 1px solid rgba(100, 150, 255, 0.3);
+  margin: 4px;
+  padding: 8px;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+}
+
+/* === LED LADDER EFFECT FOR BARS === */
+levelbar block.filled {
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(100, 150, 255, 0.8) 0px,
+    rgba(150, 200, 255, 0.9) 2px,
+    rgba(100, 150, 255, 0.8) 3px,
+    rgba(20, 25, 40, 0.8) 4px,
+    rgba(20, 25, 40, 0.8) 5px
+  );
+}
+
+/* === SPECTRUM ANALYZER TARGETING === */
+drawingarea {
+  background-color: rgba(20, 25, 40, 0.9);
+}
+
+canvas {
+  background-color: rgba(20, 25, 40, 0.9);
+  border: 1px solid rgba(100, 150, 255, 0.3);
+}
