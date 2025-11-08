@@ -8,6 +8,12 @@ Transform your Easy Effects interface with custom themes inspired by classic aud
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 ![Platform](https://img.shields.io/badge/Platform-Linux-blue)
 
+## 🎮 Interactive Skin Manager
+
+Easy-to-use interactive menu for switching skins on the fly:
+
+![Script Menu](screenshots/script-menu.png)
+
 ## 🎨 Available Skins
 
 ### 1. Onkyo Green
