@@ -1,119 +1,117 @@
 /* ============================================
-   RETRO ONKYO 1980s THEME FOR EASY EFFECTS
-   Brushed Aluminum + White Screenprint + LED Meters
+   RETRO ONKYO THEME FOR EASY EFFECTS
+   Vintage VFD "atomic green" glow on near-black chassis
    ============================================ */
 
 /* === GLOBAL WINDOW STYLING === */
 window {
-  background-color: #1a1a1a;
-  color: #e8e8e8;
+  background-color: #070707;
+  color: #d8ede2;
   font-family: "Monospace", "Liberation Mono", "Courier New";
 }
 
-/* Main application background - brushed black aluminum chassis */
+/* Main application background - near-black brushed chassis */
 .background {
-  background-color: #1a1a1a;
+  background-color: #070707;
   background-image:
     repeating-linear-gradient(
       0deg,
-      rgba(255, 255, 255, 0.03) 0px,
-      rgba(0, 0, 0, 0.03) 1px,
-      rgba(255, 255, 255, 0.03) 2px
+      rgba(43, 255, 143, 0.015) 0px,
+      rgba(0, 0, 0, 0.02) 1px,
+      rgba(43, 255, 143, 0.015) 2px
     ),
-    linear-gradient(180deg, #222222 0%, #1a1a1a 50%, #0f0f0f 100%);
+    radial-gradient(ellipse at 50% 0%,
+      rgba(20, 153, 79, 0.10) 0%,
+      rgba(7, 7, 7, 1) 65%),
+    linear-gradient(180deg, #0c0c0c 0%, #070707 55%, #030303 100%);
 }
 
-/* === WHITE SCREENPRINT TEXT STYLING === */
+/* === GLOWING VFD TEXT === */
 label, .title, .subtitle {
-  color: #e8e8e8;
-  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.8),
-               0px 0px 1px rgba(255, 255, 255, 0.3);
+  color: #d8ede2;
+  text-shadow: 0 0 3px rgba(226, 241, 233, 0.5),
+               0 0 9px rgba(43, 255, 143, 0.16);
   font-weight: 500;
   letter-spacing: 0.5px;
 }
 
-/* Headers with brushed aluminum look */
+/* Headers - dark chassis with a thin glowing green rule */
 headerbar, .header-bar {
-  background-color: #1a1a1a;
+  background-color: #090909;
   background-image:
     repeating-linear-gradient(
       90deg,
-      rgba(255, 255, 255, 0.03) 0px,
-      rgba(0, 0, 0, 0.03) 1px,
-      rgba(255, 255, 255, 0.03) 2px
+      rgba(43, 255, 143, 0.015) 0px,
+      rgba(0, 0, 0, 0.02) 1px,
+      rgba(43, 255, 143, 0.015) 2px
     ),
-    linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
-  color: #e8e8e8;
-  border-bottom: 2px solid #00cc00;
-  box-shadow: 0 2px 8px rgba(0, 255, 65, 0.3);
+    linear-gradient(180deg, #101010 0%, #070707 100%);
+  color: #e2f3ea;
+  border-bottom: 1px solid #14994f;
+  box-shadow: 0 2px 16px rgba(43, 255, 143, 0.25);
 }
 
 headerbar label, .header-bar label {
-  color: #e8e8e8;
-  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.9),
-               0px 0px 2px rgba(255, 255, 255, 0.4);
+  color: #eaf6ef;
+  text-shadow: 0 0 4px rgba(234, 246, 239, 0.6),
+               0 0 12px rgba(43, 255, 143, 0.2);
   font-weight: bold;
   letter-spacing: 1.5px;
 }
 
-/* === BUTTONS - LED STYLE === */
+/* === BUTTONS - PANEL STYLE === */
 button {
-  background-color: #1a1a1a;
-  background-image:
-    repeating-linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.02) 0px,
-      rgba(0, 0, 0, 0.02) 1px,
-      rgba(255, 255, 255, 0.02) 2px
-    ),
-    linear-gradient(180deg, #2a2a2a 0%, #1a1a1a 100%);
-  color: #e8e8e8;
-  border: 1px solid #00aa00;
+  background-color: #0a0a0a;
+  background-image: linear-gradient(180deg, #111111 0%, #080808 100%);
+  color: #d8ede2;
+  border: 1px solid #0c6e3c;
   border-radius: 2px;
-  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.8);
-  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.05);
+  text-shadow: 0 0 3px rgba(216, 237, 226, 0.4);
+  box-shadow: inset 0 1px 2px rgba(43, 255, 143, 0.04);
 }
 
 button:hover {
-  background-color: #2a2a2a;
-  border-color: #00ff41;
-  box-shadow: 0 0 12px rgba(0, 255, 65, 0.6),
-              inset 0 1px 2px rgba(255, 255, 255, 0.1);
+  background-color: #0e0e0e;
+  border-color: #2bff8f;
+  color: #eaf6ef;
+  text-shadow: 0 0 6px rgba(220, 245, 232, 0.6);
+  box-shadow: 0 0 16px rgba(43, 255, 143, 0.45),
+              inset 0 0 8px rgba(43, 255, 143, 0.08);
 }
 
 button:active, button:checked {
-  background-color: #00aa00;
-  background-image: linear-gradient(180deg, #00cc00 0%, #00aa00 100%);
-  color: #000000;
-  border-color: #00ff41;
-  box-shadow: 0 0 16px rgba(0, 255, 65, 0.9),
-              inset 0 2px 4px rgba(0, 0, 0, 0.4);
-  text-shadow: none;
+  background-color: #0a1f15;
+  background-image: linear-gradient(180deg, #0e2a1c 0%, #081610 100%);
+  color: #2bff8f;
+  border-color: #2bff8f;
+  box-shadow: 0 0 22px rgba(43, 255, 143, 0.75),
+              inset 0 0 12px rgba(43, 255, 143, 0.25);
+  text-shadow: 0 0 10px rgba(43, 255, 143, 1);
 }
 
 /* === SWITCHES - POWER INDICATORS === */
 switch {
-  background-color: #1a1a1a;
-  border: 1px solid #00aa00;
-  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.8);
+  background-color: #060606;
+  border: 1px solid #0c6e3c;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.9);
 }
 
 switch:checked {
-  background-color: #00aa00;
-  background-image: linear-gradient(90deg, #00cc00 0%, #00ff41 100%);
-  box-shadow: 0 0 16px rgba(0, 255, 65, 0.9),
-              inset 0 0 12px rgba(255, 255, 255, 0.2);
+  background-color: #0a1f15;
+  background-image: linear-gradient(90deg, #0e2a1c 0%, #14994f 100%);
+  box-shadow: 0 0 18px rgba(43, 255, 143, 0.7),
+              inset 0 0 12px rgba(43, 255, 143, 0.15);
 }
 
 switch slider {
-  background-color: #2a2a2a;
-  border: 1px solid #00aa00;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  background-color: #141414;
+  border: 1px solid #0c6e3c;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 switch:checked slider {
-  background-color: #00ff41;
-  box-shadow: 0 0 12px rgba(0, 255, 65, 1),
+  background-color: #2bff8f;
+  box-shadow: 0 0 14px rgba(43, 255, 143, 1),
               0 2px 4px rgba(0, 0, 0, 0.8);
 }
 
@@ -123,94 +121,96 @@ scale {
 }
 
 scale trough {
-  background-color: #1a1a1a;
-  background-image:
-    repeating-linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.02) 0px,
-      rgba(0, 0, 0, 0.02) 1px,
-      rgba(255, 255, 255, 0.02) 2px
-    ),
-    linear-gradient(90deg, #1a1a1a 0%, #0f0f0f 50%, #1a1a1a 100%);
-  border: 1px solid #00aa00;
+  background-color: #050505;
+  background-image: linear-gradient(90deg, #060606 0%, #030303 50%, #060606 100%);
+  border: 1px solid #0c6e3c;
   min-height: 8px;
-  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.9);
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.95);
 }
 
 scale highlight {
-  background-color: #00aa00;
-  background-image: linear-gradient(90deg,
-    #00cc00 0%,
-    #00ff41 100%);
-  box-shadow: 0 0 8px rgba(0, 255, 65, 0.8);
+  background-color: #14994f;
+  background-image: linear-gradient(90deg, #14994f 0%, #2bff8f 100%);
+  box-shadow: 0 0 12px rgba(43, 255, 143, 0.8);
 }
 
+/* Handle drawn as two red vertical grip lines (no box) */
 scale slider {
-  background-color: #2a2a2a;
-  background-image: linear-gradient(180deg, #3a3a3a 0%, #1a1a1a 100%);
-  border: 2px solid #00cc00;
-  border-radius: 1px;
-  min-height: 20px;
-  min-width: 20px;
-  box-shadow: 0 0 8px rgba(0, 255, 65, 0.6),
-              inset 0 1px 2px rgba(255, 255, 255, 0.1);
+  background-color: transparent;
+  background-image: linear-gradient(90deg,
+    transparent 0%, transparent 30%,
+    #ff2a1a 30%, #ff2a1a 40%,
+    transparent 40%, transparent 60%,
+    #ff2a1a 60%, #ff2a1a 70%,
+    transparent 70%, transparent 100%);
+  border: none;
+  border-radius: 0;
+  min-height: 24px;
+  min-width: 18px;
+  box-shadow: 0 0 5px rgba(255, 42, 26, 0.45);
 }
 
 scale slider:hover {
-  border-color: #00ff41;
-  box-shadow: 0 0 12px rgba(0, 255, 65, 0.9);
+  background-image: linear-gradient(90deg,
+    transparent 0%, transparent 30%,
+    #ff5a4a 30%, #ff5a4a 40%,
+    transparent 40%, transparent 60%,
+    #ff5a4a 60%, #ff5a4a 70%,
+    transparent 70%, transparent 100%);
+  box-shadow: 0 0 10px rgba(255, 42, 26, 0.8);
 }
 
-/* === LEVEL METERS / PROGRESS BARS - VU METERS === */
+/* === LEVEL METERS / VU METERS === */
 levelbar block,
 progressbar progress {
-  background-color: #00aa00;
+  background-color: #14994f;
   background-image: linear-gradient(90deg,
-    #00cc00 0%,
-    #00ff41 70%,
-    #ffff00 85%,
-    #ff6600 95%,
-    #ff0000 100%);
-  box-shadow: 0 0 8px rgba(0, 255, 65, 0.8);
+    #0e7a42 0%,
+    #2bff8f 65%,
+    #d6ff3b 84%,
+    #ff8c1a 94%,
+    #ff2a1a 100%);
+  box-shadow: 0 0 10px rgba(43, 255, 143, 0.7);
   border: none;
 }
 
 levelbar trough,
 progressbar trough {
-  background-color: #0a0a0a;
-  border: 1px solid #00aa00;
-  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.9);
+  background-color: #040404;
+  border: 1px solid #0c6e3c;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.95);
 }
 
 /* High level warning (red zone) */
 levelbar block.high,
 levelbar block.full {
-  background-color: #ff0000;
-  background-image: linear-gradient(90deg, #ff6600 0%, #ff0000 100%);
-  box-shadow: 0 0 12px rgba(255, 0, 0, 0.9);
+  background-color: #ff2a1a;
+  background-image: linear-gradient(90deg, #ff8c1a 0%, #ff2a1a 100%);
+  box-shadow: 0 0 14px rgba(255, 42, 26, 0.9);
 }
 
 /* === ENTRY FIELDS - DISPLAY PANEL === */
 entry {
-  background-color: #0f0f0f;
-  color: #e8e8e8;
-  border: 1px solid #00aa00;
-  caret-color: #00ff41;
-  box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.9);
+  background-color: #030303;
+  color: #2bff8f;
+  border: 1px solid #0c6e3c;
+  caret-color: #2bff8f;
+  text-shadow: 0 0 6px rgba(43, 255, 143, 0.7);
+  box-shadow: inset 0 0 14px rgba(0, 0, 0, 0.95);
 }
 
 entry:focus {
-  border-color: #00ff41;
-  box-shadow: 0 0 8px rgba(0, 255, 65, 0.6),
-              inset 0 0 12px rgba(0, 0, 0, 0.9);
+  border-color: #2bff8f;
+  box-shadow: 0 0 10px rgba(43, 255, 143, 0.6),
+              inset 0 0 14px rgba(0, 0, 0, 0.95);
 }
 
-/* === SPINBUTTONS - NUMERIC DISPLAYS === */
+/* === SPINBUTTONS - NUMERIC VFD READOUTS === */
 spinbutton {
-  background-color: #0f0f0f;
-  color: #e8e8e8;
-  border: 1px solid #00aa00;
-  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.8);
+  background-color: #030303;
+  color: #2bff8f;
+  border: 1px solid #0c6e3c;
+  text-shadow: 0 0 7px rgba(43, 255, 143, 0.85);
   font-family: "Monospace";
   font-weight: bold;
 }
@@ -222,68 +222,58 @@ spinbutton button {
 
 /* === LISTS AND ROWS === */
 list, listview {
-  background-color: #0f0f0f;
-  border: 1px solid #00aa00;
+  background-color: #050505;
+  border: 1px solid #0c6e3c;
 }
 
 row {
   background-color: transparent;
-  color: #e8e8e8;
-  border-bottom: 1px solid #1a1a1a;
+  color: #d8ede2;
+  border-bottom: 1px solid #0d0d0d;
 }
 
 row:hover {
-  background-color: #1a1a1a;
-  box-shadow: inset 0 0 8px rgba(0, 255, 65, 0.2);
+  background-color: #0c0c0c;
+  box-shadow: inset 0 0 10px rgba(43, 255, 143, 0.15);
 }
 
 row:selected {
-  background-color: #00aa00;
-  color: #000000;
-  box-shadow: inset 0 0 12px rgba(0, 255, 65, 0.4);
+  background-color: #0a1f15;
+  color: #2bff8f;
+  box-shadow: inset 0 0 14px rgba(43, 255, 143, 0.35);
 }
 
 row label {
-  color: #e8e8e8;
+  color: #d8ede2;
+}
+
+row:selected label {
+  color: #2bff8f;
 }
 
 /* === SCROLLBARS - MINIMAL === */
 scrollbar {
-  background-color: #0f0f0f;
-  border-left: 1px solid #00aa00;
+  background-color: #050505;
+  border-left: 1px solid #0c6e3c;
 }
 
 scrollbar slider {
-  background-color: #1a1a1a;
-  background-image:
-    repeating-linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 0.02) 0px,
-      rgba(0, 0, 0, 0.02) 1px,
-      rgba(255, 255, 255, 0.02) 2px
-    );
-  border: 1px solid #00aa00;
+  background-color: #0e0e0e;
+  border: 1px solid #0c6e3c;
   min-width: 10px;
   min-height: 40px;
 }
 
 scrollbar slider:hover {
-  background-color: #2a2a2a;
-  border-color: #00cc00;
+  background-color: #141414;
+  border-color: #2bff8f;
 }
 
 /* === POPOVER MENUS === */
 popover {
-  background-color: #1a1a1a;
-  background-image:
-    repeating-linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 0.02) 0px,
-      rgba(0, 0, 0, 0.02) 1px,
-      rgba(255, 255, 255, 0.02) 2px
-    );
-  border: 2px solid #00aa00;
-  box-shadow: 0 4px 16px rgba(0, 255, 65, 0.4);
+  background-color: #090909;
+  border: 1px solid #14994f;
+  box-shadow: 0 4px 20px rgba(43, 255, 143, 0.3);
 }
 
 popover > contents {
@@ -291,155 +281,145 @@ popover > contents {
 }
 
 popover label {
-  color: #e8e8e8;
+  color: #d8ede2;
 }
 
 /* === NOTEBOOK TABS === */
 notebook {
-  background-color: #0f0f0f;
+  background-color: #050505;
 }
 
 notebook header {
-  background-color: #1a1a1a;
-  background-image:
-    repeating-linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.02) 0px,
-      rgba(0, 0, 0, 0.02) 1px,
-      rgba(255, 255, 255, 0.02) 2px
-    );
-  border-bottom: 2px solid #00aa00;
+  background-color: #090909;
+  border-bottom: 1px solid #14994f;
 }
 
 notebook tab {
-  background-color: #1a1a1a;
-  color: #e8e8e8;
-  border: 1px solid #00aa00;
+  background-color: #090909;
+  color: #d8ede2;
+  border: 1px solid #0c6e3c;
   border-bottom: none;
   padding: 8px 16px;
 }
 
 notebook tab:hover {
-  background-color: #2a2a2a;
+  background-color: #0e0e0e;
+  color: #eaf6ef;
+  text-shadow: 0 0 6px rgba(220, 245, 232, 0.55);
 }
 
 notebook tab:checked {
-  background-color: #00aa00;
-  color: #000000;
+  background-color: #0a1f15;
+  color: #2bff8f;
   font-weight: bold;
-  box-shadow: 0 0 12px rgba(0, 255, 65, 0.7);
+  box-shadow: 0 0 14px rgba(43, 255, 143, 0.6);
+  text-shadow: 0 0 8px rgba(43, 255, 143, 0.9);
 }
 
 /* === SEPARATORS === */
 separator {
-  background-color: #00aa00;
+  background-color: #14994f;
   min-width: 1px;
   min-height: 1px;
-  box-shadow: 0 0 4px rgba(0, 255, 65, 0.5);
+  box-shadow: 0 0 6px rgba(43, 255, 143, 0.5);
 }
 
 /* === CHECKBOXES - LED INDICATORS === */
 checkbutton check,
 checkbox {
-  background-color: #0a0a0a;
-  border: 1px solid #00aa00;
+  background-color: #040404;
+  border: 1px solid #0c6e3c;
   border-radius: 2px;
   min-width: 16px;
   min-height: 16px;
-  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.9);
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.95);
 }
 
 checkbutton:checked check,
 checkbox:checked {
-  background-color: #00aa00;
-  background-image: linear-gradient(135deg, #00cc00 0%, #00ff41 100%);
-  border-color: #00ff41;
-  box-shadow: 0 0 12px rgba(0, 255, 65, 0.9);
+  background-color: #0a1f15;
+  background-image: linear-gradient(135deg, #14994f 0%, #2bff8f 100%);
+  border-color: #2bff8f;
+  box-shadow: 0 0 12px rgba(43, 255, 143, 0.9);
   -gtk-icon-source: none;
 }
 
 /* === RADIO BUTTONS === */
 radiobutton radio,
 radio {
-  background-color: #0a0a0a;
-  border: 1px solid #00aa00;
+  background-color: #040404;
+  border: 1px solid #0c6e3c;
   min-width: 16px;
   min-height: 16px;
-  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.9);
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.95);
 }
 
 radiobutton:checked radio,
 radio:checked {
-  background-color: #00aa00;
-  border-color: #00ff41;
-  box-shadow: 0 0 12px rgba(0, 255, 65, 0.9),
+  background-color: #2bff8f;
+  border-color: #2bff8f;
+  box-shadow: 0 0 12px rgba(43, 255, 143, 0.9),
               inset 0 0 4px rgba(0, 0, 0, 0.4);
 }
 
 /* === TOOLTIPS === */
 tooltip {
-  background-color: #1a1a1a;
-  color: #e8e8e8;
-  border: 1px solid #00aa00;
+  background-color: #090909;
+  color: #d8ede2;
+  border: 1px solid #14994f;
   border-radius: 2px;
-  box-shadow: 0 2px 8px rgba(0, 255, 65, 0.4);
+  box-shadow: 0 2px 12px rgba(43, 255, 143, 0.3);
 }
 
 tooltip label {
-  color: #e8e8e8;
-  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.8);
+  color: #d8ede2;
+  text-shadow: 0 0 3px rgba(216, 237, 226, 0.45);
 }
 
-/* === SPECTRUM ANALYZER / EQUALIZER BARS - LED EFFECT === */
-/* Target any graph or chart widgets */
+/* === SPECTRUM ANALYZER === */
+/* NOTE: EasyEffects paints the spectrum panel's own opaque black
+   background and exposes no background-color setting, so CSS can only
+   style the surrounding frame. The trace/bar color is set via gsettings
+   (spectrum 'color') to the atomic green by the skin manager. */
 graph, chart, .spectrum {
-  background-color: #0f0f0f;
-  border: 1px solid #00aa00;
-  box-shadow: inset 0 0 16px rgba(0, 0, 0, 0.9);
+  background-color: #030303;
+  border: 1px solid #0c6e3c;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.95);
 }
 
-/* LED segmented bars for spectrum display - WinAmp style! */
 graph > *, chart > *, .spectrum > * {
-  background-image: repeating-linear-gradient(
-    180deg,
-    #00cc00 0px,
-    #00ff41 2px,
-    #00cc00 4px,
-    #003300 5px,
-    #000000 6px,
-    #000000 8px
-  );
-  box-shadow: 0 0 8px rgba(0, 255, 65, 0.9);
+  background-image: none;
+  box-shadow: none;
 }
 
 /* Grid lines - like graph paper on old equipment */
 .grid {
-  color: #003300;
+  color: #04140d;
 }
 
 /* === SCROLLED WINDOW === */
 scrolledwindow {
-  background-color: #0f0f0f;
-  border: 1px solid #00aa00;
+  background-color: #050505;
+  border: 1px solid #0c6e3c;
 }
 
 /* === FRAMES AND BORDERS === */
 frame {
-  border: 1px solid #00aa00;
+  border: 1px solid #0c6e3c;
   background-color: transparent;
 }
 
 frame > border {
-  border: 1px solid #00aa00;
+  border: 1px solid #0c6e3c;
 }
 
 /* === OVERLAY LABELS (like preset names) === */
 .overlay-label {
-  background-color: #1a1a1a;
-  color: #e8e8e8;
-  border: 1px solid #00aa00;
-  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.9),
-               0 0 2px rgba(255, 255, 255, 0.4);
+  background-color: #090909;
+  color: #2bff8f;
+  border: 1px solid #14994f;
+  text-shadow: 0 0 8px rgba(43, 255, 143, 0.9),
+               0 0 18px rgba(43, 255, 143, 0.4);
   font-weight: bold;
   letter-spacing: 2px;
   padding: 8px 16px;
@@ -447,94 +427,64 @@ frame > border {
 
 /* === ACCENT COLOR === */
 .accent {
-  color: #00ff41;
-  background-color: #00aa00;
+  color: #2bff8f;
+  background-color: #0a1f15;
 }
 
-/* === WARNING/ERROR COLORS (still retro) === */
+/* === WARNING/ERROR COLORS === */
 .warning {
-  color: #ffff00;
-  text-shadow: 0 0 8px rgba(255, 255, 0, 0.8);
+  color: #d6ff3b;
+  text-shadow: 0 0 8px rgba(214, 255, 59, 0.8);
 }
 
 .error {
-  color: #ff0000;
-  text-shadow: 0 0 8px rgba(255, 0, 0, 0.8);
+  color: #ff2a1a;
+  text-shadow: 0 0 8px rgba(255, 42, 26, 0.8);
 }
 
 /* === CUSTOM EFFECTS PANELS === */
 .effect-panel {
-  background-color: #0f0f0f;
+  background-color: #050505;
   background-image:
     repeating-linear-gradient(
       0deg,
-      rgba(255, 255, 255, 0.02) 0px,
+      rgba(43, 255, 143, 0.012) 0px,
       rgba(0, 0, 0, 0.02) 1px,
-      rgba(255, 255, 255, 0.02) 2px
+      rgba(43, 255, 143, 0.012) 2px
     );
-  border: 1px solid #00aa00;
+  border: 1px solid #0c6e3c;
   margin: 4px;
   padding: 8px;
-  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.85);
 }
 
 /* === LED LADDER EFFECT FOR BARS === */
-/* This creates segmented LED bars like classic equipment */
 levelbar block.filled {
   background-image: repeating-linear-gradient(
     90deg,
-    #00cc00 0px,
-    #00ff41 2px,
-    #00cc00 3px,
-    #0f0f0f 4px,
-    #0f0f0f 5px
+    #14994f 0px,
+    #2bff8f 2px,
+    #14994f 3px,
+    #050505 4px,
+    #050505 5px
   );
 }
 
 /* === ADDITIONAL SPECTRUM ANALYZER TARGETING === */
-/* Easy Effects specific spectrum widget styling */
-drawingarea {
-  background-color: #000000;
-}
-
-/* Spectrum bars with LED segmentation */
-.spectrum-bar, .bar, .spectrum-gradient {
-  background-image: repeating-linear-gradient(
-    180deg,
-    #00cc00 0px,
-    #00ff41 3px,
-    #00cc00 6px,
-    #003300 7px,
-    #000000 8px,
-    #000000 12px
-  ) !important;
-  box-shadow: 0 0 10px rgba(0, 255, 65, 0.9);
-}
-
-/* Canvas elements for spectrum */
-canvas {
-  background-color: #0f0f0f;
-  border: 1px solid #00aa00;
-}
-
-/* Additional targeting for any spectrum-like widgets */
+drawingarea,
+canvas,
 *[class*="spectrum"],
 *[class*="analyzer"],
 *[class*="visualiz"] {
-  background-color: #0f0f0f;
+  background-color: #030303;
+  border: 1px solid #0c6e3c;
 }
 
+/* keep child nodes from painting bright bars on the lit panel */
+.spectrum-bar, .bar, .spectrum-gradient,
 *[class*="spectrum"] *,
 *[class*="analyzer"] *,
 *[class*="visualiz"] * {
-  background-image: repeating-linear-gradient(
-    180deg,
-    #00cc00 0px,
-    #00ff41 3px,
-    #00cc00 6px,
-    #003300 7px,
-    #000000 8px,
-    #000000 12px
-  );
-  box-shadow: 0 0 10px rgba(0, 255, 65, 0.9);
+  background-image: none;
+  box-shadow: none;
 }

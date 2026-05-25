@@ -66,6 +66,18 @@ Easy-to-use interactive menu for switching skins on the fly:
 
 ![Woodgrain](screenshots/woodgrain.png)
 
+### 6. EasyAmp
+**Classic media-player tribute**
+- Beveled gunmetal chrome
+- Green 7-segment LCD readouts
+- EQ-style sliders (green→amber→red) with a beveled grip
+- Green spectrum bars on black
+- A loving nod to late-90s players — original art, no trademarked assets
+
+> Looks best with two optional OFL fonts installed to `~/.local/share/fonts`:
+> **DSEG7 Classic** (7-segment LCD) and **Pixelify Sans** (pixel chrome).
+> Without them it falls back to monospace/sans cleanly.
+
 ## 📋 Requirements
 
 - **Easy Effects** (installed via Flatpak)

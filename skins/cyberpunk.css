@@ -1,13 +1,14 @@
 /* ============================================
    CYBERPUNK THEME FOR EASY EFFECTS
-   Neon Pink/Cyan/Purple Synthwave
+   Cyan text/buttons/sliders on pink neon frame (Rajdhani)
    ============================================ */
 
 /* === GLOBAL WINDOW STYLING === */
 window {
   background-color: #0d0221;
-  color: #ff00ff;
-  font-family: "Monospace", "Liberation Mono", "Courier New";
+  color: #00ffff;
+  font-family: "Rajdhani", "Noto Sans", sans-serif;
+  font-weight: 500;
 }
 
 /* Main application background - cyberpunk grid */
@@ -33,22 +34,28 @@ window {
       rgba(13, 2, 33, 1) 60%);
 }
 
-/* === NEON TEXT STYLING === */
+/* === NEON TEXT STYLING (cyan) === */
 label, .title, .subtitle {
-  color: #ff00ff;
-  text-shadow: 0 0 10px rgba(255, 0, 255, 0.8),
-               0 0 20px rgba(255, 0, 255, 0.4);
-  font-weight: 500;
+  color: #00ffff;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.8),
+               0 0 20px rgba(0, 255, 255, 0.4);
+  font-weight: 600;
   letter-spacing: 1px;
 }
 
-/* Headers with neon glow */
+.title {
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Headers with neon glow (pink frame, cyan text) */
 headerbar, .header-bar {
   background-color: #0d0221;
   background-image: linear-gradient(180deg,
     rgba(138, 43, 226, 0.3) 0%,
     rgba(13, 2, 33, 1) 100%);
-  color: #ff00ff;
+  color: #00ffff;
   border-bottom: 2px solid #ff00ff;
   box-shadow: 0 2px 20px rgba(255, 0, 255, 0.6);
 }
@@ -57,46 +64,66 @@ headerbar label, .header-bar label {
   color: #00ffff;
   text-shadow: 0 0 15px rgba(0, 255, 255, 1),
                0 0 30px rgba(0, 255, 255, 0.5);
-  font-weight: bold;
-  letter-spacing: 2px;
+  font-weight: 700;
+  letter-spacing: 3px;
   text-transform: uppercase;
 }
 
-/* === BUTTONS - NEON STYLE === */
+/* === BUTTONS - CYAN NEON === */
 button {
   background-color: #0d0221;
   background-image: linear-gradient(180deg,
-    rgba(138, 43, 226, 0.2) 0%,
+    rgba(0, 180, 226, 0.15) 0%,
     rgba(13, 2, 33, 1) 100%);
-  color: #ff00ff;
-  border: 1px solid #ff00ff;
+  color: #00ffff;
+  border: 1px solid #00ffff;
   border-radius: 0px;
-  text-shadow: 0 0 8px rgba(255, 0, 255, 0.8);
-  box-shadow: inset 0 0 10px rgba(255, 0, 255, 0.1);
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.8);
+  box-shadow: inset 0 0 10px rgba(0, 255, 255, 0.1);
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
 button:hover {
-  background-color: rgba(138, 43, 226, 0.2);
+  background-color: rgba(0, 180, 226, 0.2);
   border-color: #00ffff;
   color: #00ffff;
-  text-shadow: 0 0 10px rgba(0, 255, 255, 1);
+  text-shadow: 0 0 12px rgba(0, 255, 255, 1);
   box-shadow: 0 0 20px rgba(0, 255, 255, 0.6),
               inset 0 0 15px rgba(0, 255, 255, 0.2);
 }
 
 button:active, button:checked {
-  background-color: rgba(255, 0, 255, 0.3);
+  background-color: rgba(0, 255, 255, 0.25);
   background-image: linear-gradient(180deg,
-    rgba(255, 0, 255, 0.4) 0%,
-    rgba(138, 43, 226, 0.3) 100%);
+    rgba(0, 255, 255, 0.35) 0%,
+    rgba(0, 180, 226, 0.25) 100%);
   color: #ffffff;
-  border-color: #ff00ff;
-  box-shadow: 0 0 30px rgba(255, 0, 255, 1),
-              inset 0 0 20px rgba(255, 0, 255, 0.4);
+  border-color: #00ffff;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 1),
+              inset 0 0 20px rgba(0, 255, 255, 0.4);
   text-shadow: 0 0 15px rgba(255, 255, 255, 1);
 }
 
-/* === SWITCHES - NEON INDICATORS === */
+/* === ICONS (gear / settings / toolbar symbolic icons) - PINK === */
+image,
+button image,
+menubutton image,
+button.image-button image {
+  color: #ff00ff;
+  -gtk-icon-shadow: 0 0 8px rgba(255, 0, 255, 0.8);
+}
+
+/* keep icon pink even when its button is hovered/pressed */
+button:hover image,
+button:active image,
+button:checked image,
+menubutton:hover image {
+  color: #ff00ff;
+  -gtk-icon-shadow: 0 0 12px rgba(255, 0, 255, 1);
+}
+
+/* === SWITCHES - NEON INDICATORS (unchanged / pink) === */
 switch {
   background-color: #0d0221;
   border: 1px solid #ff00ff;
@@ -124,7 +151,7 @@ switch:checked slider {
               0 0 40px rgba(255, 0, 255, 0.6);
 }
 
-/* === SLIDERS === */
+/* === SLIDERS (equalizer) - CYAN === */
 scale {
   background-color: transparent;
 }
@@ -133,26 +160,27 @@ scale trough {
   background-color: #0d0221;
   background-image: linear-gradient(90deg,
     #0d0221 0%,
-    #1a0933 50%,
+    #06283d 50%,
     #0d0221 100%);
-  border: 1px solid #ff00ff;
+  border: 1px solid #00ffff;
   min-height: 8px;
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.9);
 }
 
 scale highlight {
-  background-color: #ff00ff;
+  background-color: #00ffff;
   background-image: linear-gradient(90deg,
-    #ff00ff 0%,
+    #00b4e2 0%,
     #00ffff 50%,
-    #ff00ff 100%);
-  box-shadow: 0 0 15px rgba(255, 0, 255, 1);
+    #00b4e2 100%);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 1);
 }
 
+/* Slider handle (the little square box) - PINK, trough/fill stay cyan */
 scale slider {
   background-color: #1a0933;
   background-image: linear-gradient(180deg,
-    rgba(255, 0, 255, 0.3) 0%,
+    rgba(255, 0, 255, 0.35) 0%,
     #1a0933 100%);
   border: 2px solid #ff00ff;
   border-radius: 0px;
@@ -163,11 +191,11 @@ scale slider {
 }
 
 scale slider:hover {
-  border-color: #00ffff;
-  box-shadow: 0 0 25px rgba(0, 255, 255, 1);
+  border-color: #ffffff;
+  box-shadow: 0 0 25px rgba(255, 0, 255, 1);
 }
 
-/* === LEVEL METERS - NEON VU === */
+/* === LEVEL METERS - NEON VU (unchanged) === */
 levelbar block,
 progressbar progress {
   background-color: #ff00ff;
@@ -196,13 +224,14 @@ levelbar block.full {
   box-shadow: 0 0 20px rgba(255, 0, 128, 1);
 }
 
-/* === ENTRY FIELDS === */
+/* === ENTRY FIELDS (pink frame, cyan text) === */
 entry {
   background-color: #0d0221;
-  color: #ff00ff;
+  color: #00ffff;
   border: 1px solid #ff00ff;
   caret-color: #00ffff;
   box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.9);
+  font-weight: 500;
 }
 
 entry:focus {
@@ -211,14 +240,15 @@ entry:focus {
               inset 0 0 15px rgba(0, 0, 0, 0.9);
 }
 
-/* === SPINBUTTONS === */
+/* === SPINBUTTONS (value readouts - cyan text) === */
 spinbutton {
   background-color: #0d0221;
-  color: #ff00ff;
+  color: #00ffff;
   border: 1px solid #ff00ff;
-  text-shadow: 0 0 10px rgba(255, 0, 255, 0.8);
-  font-family: "Monospace";
-  font-weight: bold;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+  font-family: "Rajdhani", "Noto Sans", sans-serif;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
 spinbutton button {
@@ -226,7 +256,7 @@ spinbutton button {
   min-width: 16px;
 }
 
-/* === LISTS AND ROWS === */
+/* === LISTS AND ROWS (pink frame, cyan text) === */
 list, listview {
   background-color: #0d0221;
   border: 1px solid #ff00ff;
@@ -234,7 +264,7 @@ list, listview {
 
 row {
   background-color: transparent;
-  color: #ff00ff;
+  color: #00ffff;
   border-bottom: 1px solid rgba(255, 0, 255, 0.2);
 }
 
@@ -250,10 +280,14 @@ row:selected {
 }
 
 row label {
-  color: #ff00ff;
+  color: #00ffff;
 }
 
-/* === SCROLLBARS === */
+row:selected label {
+  color: #ffffff;
+}
+
+/* === SCROLLBARS (unchanged / pink) === */
 scrollbar {
   background-color: #0d0221;
   border-left: 1px solid #ff00ff;
@@ -271,7 +305,7 @@ scrollbar slider:hover {
   border-color: #00ffff;
 }
 
-/* === POPOVER MENUS === */
+/* === POPOVER MENUS (pink frame, cyan text) === */
 popover {
   background-color: #0d0221;
   border: 2px solid #ff00ff;
@@ -283,10 +317,10 @@ popover > contents {
 }
 
 popover label {
-  color: #ff00ff;
+  color: #00ffff;
 }
 
-/* === NOTEBOOK TABS === */
+/* === NOTEBOOK TABS (pink frame, cyan text) === */
 notebook {
   background-color: #0d0221;
 }
@@ -298,10 +332,12 @@ notebook header {
 
 notebook tab {
   background-color: #0d0221;
-  color: #ff00ff;
+  color: #00ffff;
   border: 1px solid #ff00ff;
   border-bottom: none;
   padding: 8px 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
 notebook tab:hover {
@@ -313,12 +349,12 @@ notebook tab:hover {
 notebook tab:checked {
   background-color: rgba(255, 0, 255, 0.3);
   color: #ffffff;
-  font-weight: bold;
+  font-weight: 700;
   box-shadow: 0 0 20px rgba(255, 0, 255, 0.8);
   text-shadow: 0 0 15px rgba(255, 255, 255, 1);
 }
 
-/* === SEPARATORS === */
+/* === SEPARATORS (unchanged / pink) === */
 separator {
   background-color: #ff00ff;
   min-width: 1px;
@@ -326,7 +362,7 @@ separator {
   box-shadow: 0 0 10px rgba(255, 0, 255, 0.8);
 }
 
-/* === CHECKBOXES === */
+/* === CHECKBOXES (unchanged / pink) === */
 checkbutton check,
 checkbox {
   background-color: #0d0221;
@@ -348,7 +384,7 @@ checkbox:checked {
   -gtk-icon-source: none;
 }
 
-/* === RADIO BUTTONS === */
+/* === RADIO BUTTONS (unchanged / pink) === */
 radiobutton radio,
 radio {
   background-color: #0d0221;
@@ -366,7 +402,7 @@ radio:checked {
               inset 0 0 10px rgba(255, 0, 255, 0.3);
 }
 
-/* === TOOLTIPS === */
+/* === TOOLTIPS (unchanged / cyan) === */
 tooltip {
   background-color: #0d0221;
   color: #00ffff;
@@ -380,7 +416,7 @@ tooltip label {
   text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
 }
 
-/* === SPECTRUM ANALYZER === */
+/* === SPECTRUM ANALYZER (unchanged / pink frame) === */
 graph, chart, .spectrum {
   background-color: #0d0221;
   border: 1px solid #ff00ff;
@@ -391,13 +427,13 @@ graph, chart, .spectrum {
   color: rgba(255, 0, 255, 0.2);
 }
 
-/* === SCROLLED WINDOW === */
+/* === SCROLLED WINDOW (unchanged / pink frame) === */
 scrolledwindow {
   background-color: #0d0221;
   border: 1px solid #ff00ff;
 }
 
-/* === FRAMES AND BORDERS === */
+/* === FRAMES AND SECTION OUTLINES (unchanged / pink) === */
 frame {
   border: 1px solid #ff00ff;
   background-color: transparent;
@@ -407,14 +443,14 @@ frame > border {
   border: 1px solid #ff00ff;
 }
 
-/* === OVERLAY LABELS === */
+/* === OVERLAY LABELS (cyan) === */
 .overlay-label {
   background-color: #0d0221;
   color: #00ffff;
   border: 1px solid #00ffff;
   text-shadow: 0 0 15px rgba(0, 255, 255, 1),
                0 0 30px rgba(0, 255, 255, 0.5);
-  font-weight: bold;
+  font-weight: 700;
   letter-spacing: 2px;
   padding: 8px 16px;
   text-transform: uppercase;
@@ -422,7 +458,7 @@ frame > border {
 
 /* === ACCENT COLOR === */
 .accent {
-  color: #ff00ff;
+  color: #00ffff;
   background-color: rgba(255, 0, 255, 0.3);
 }
 
@@ -437,7 +473,7 @@ frame > border {
   text-shadow: 0 0 15px rgba(255, 0, 64, 1);
 }
 
-/* === CUSTOM EFFECTS PANELS === */
+/* === CUSTOM EFFECTS PANELS (section outline / pink) === */
 .effect-panel {
   background-color: #0d0221;
   border: 1px solid #ff00ff;
@@ -446,7 +482,7 @@ frame > border {
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
 }
 
-/* === LED LADDER EFFECT FOR BARS === */
+/* === LED LADDER EFFECT FOR BARS (unchanged) === */
 levelbar block.filled {
   background-image: repeating-linear-gradient(
     90deg,

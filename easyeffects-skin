@@ -9,7 +9,8 @@ ACTIVE_CSS="$HOME/.var/app/com.github.wwmm.easyeffects/config/gtk-4.0/gtk.css"
 
 # Skin spectrum color definitions (R, G, B, Alpha)
 declare -A SPECTRUM_COLORS=(
-    ["onkyo-green"]="0.6, 1.0, 0.0, 1.0"
+    ["onkyo-green"]="0.169, 1.0, 0.561, 1.0"
+    ["easyamp"]="0.094, 0.878, 0.094, 1.0"
     ["red-black"]="1.0, 0.2, 0.0, 1.0"
     ["glass-future"]="0.4, 0.6, 1.0, 1.0"
     ["cyberpunk"]="1.0, 0.0, 1.0, 1.0"
@@ -18,7 +19,8 @@ declare -A SPECTRUM_COLORS=(
 
 # Skin axis label color definitions
 declare -A AXIS_COLORS=(
-    ["onkyo-green"]="0.7, 0.7, 0.7, 1.0"
+    ["onkyo-green"]="0.35, 0.65, 0.5, 1.0"
+    ["easyamp"]="0.3, 0.55, 0.3, 1.0"
     ["red-black"]="0.7, 0.7, 0.7, 1.0"
     ["glass-future"]="0.6, 0.7, 0.9, 1.0"
     ["cyberpunk"]="0.0, 1.0, 1.0, 1.0"
@@ -98,6 +100,9 @@ list_skins() {
                 "woodgrain")
                     echo -e "      ${BLUE}└─${NC} Vintage 1970s: Wood panels + warm amber"
                     ;;
+                "easyamp")
+                    echo -e "      ${BLUE}└─${NC} Classic player tribute: gunmetal + green LCD"
+                    ;;
             esac
             echo ""
         fi
@@ -123,6 +128,8 @@ get_current_skin() {
             echo "cyberpunk"
         elif grep -q "WOODGRAIN" "$ACTIVE_CSS"; then
             echo "woodgrain"
+        elif grep -q "EASYAMP" "$ACTIVE_CSS"; then
+            echo "easyamp"
         else
             echo "unknown"
         fi
@@ -145,7 +152,26 @@ apply_skin() {
 
     echo -e "${CYAN}Applying skin: ${YELLOW}${skin_name}${NC}"
 
-    # Copy skin CSS to active location
+    # Ensure EasyEffects uses its OWN config dir, not the host GTK4 theme.
+    # By default the flatpak mounts the host ~/.config/gtk-4.0 read-only
+    # (xdg-config/gtk-4.0:ro), which shadows our per-app gtk.css and makes
+    # skins silently fail. Dropping that one mount is idempotent and only
+    # affects EasyEffects.
+    if flatpak info --show-permissions com.github.wwmm.easyeffects 2>/dev/null \
+        | grep -q "xdg-config/gtk-4.0"; then
+        echo -e "${CYAN}Detaching EasyEffects from host GTK theme (one-time)...${NC}"
+        flatpak override --user --nofilesystem=xdg-config/gtk-4.0 com.github.wwmm.easyeffects
+        echo -e "${GREEN}✓ Will now use its own skin config${NC}"
+    fi
+
+    # Copy skin CSS to active location.
+    # If gtk.css is a symlink (e.g. to the COSMIC-generated system theme),
+    # remove the link first so we write a real file instead of clobbering
+    # the symlink target (which the desktop will later regenerate).
+    if [ -L "$ACTIVE_CSS" ]; then
+        echo -e "${YELLOW}⚠ gtk.css was a symlink to $(readlink "$ACTIVE_CSS") — replacing with a real file${NC}"
+        rm -f "$ACTIVE_CSS"
+    fi
     cp "$skin_file" "$ACTIVE_CSS"
     echo -e "${GREEN}✓ CSS applied${NC}"
 
@@ -166,14 +192,20 @@ apply_skin() {
     # Restart Easy Effects
     echo -e "${CYAN}Restarting Easy Effects...${NC}"
 
-    # Kill Easy Effects (ignore error if not running)
+    # Stop ALL Easy Effects instances. `flatpak kill` tears down the whole
+    # sandbox (the bwrap wrapper + the real process), which a plain
+    # `pkill -f` does not — pkill only hits the wrapper and leaves the
+    # reparented child running, so old instances (and their old CSS) pile up.
     echo -e "${CYAN}Stopping Easy Effects...${NC}"
-    if pkill -9 -f easyeffects 2>/dev/null; then
-        echo -e "${GREEN}✓ Easy Effects stopped${NC}"
-    else
-        echo -e "${YELLOW}⚠ Easy Effects was not running${NC}"
-    fi
+    flatpak kill com.github.wwmm.easyeffects 2>/dev/null
+    pkill -9 -x easyeffects 2>/dev/null
+    pkill -9 -f "easyeffects --gapplication-service" 2>/dev/null
     sleep 1
+    if pgrep -x easyeffects >/dev/null 2>&1; then
+        echo -e "${YELLOW}⚠ Some instances may still be running${NC}"
+    else
+        echo -e "${GREEN}✓ Easy Effects stopped${NC}"
+    fi
 
     # Start Easy Effects in background service mode (no GUI)
     echo -e "${CYAN}Starting Easy Effects in background...${NC}"
@@ -229,6 +261,9 @@ interactive_menu() {
                     ;;
                 "woodgrain")
                     desc="Vintage 1970s: Wood panels + warm amber"
+                    ;;
+                "easyamp")
+                    desc="Classic player tribute: gunmetal + green LCD"
                     ;;
             esac
             skin_descriptions+=("$desc")
@@ -291,6 +326,7 @@ ${CYAN}Available skins:${NC}
   • glass-future       Modern glass with blue tints
   • cyberpunk          Neon synthwave pink/cyan
   • woodgrain          Vintage 1970s wood panels
+  • easyamp            Classic player tribute (green LCD)
 
 ${CYAN}Examples:${NC}
   easyeffects-skin              # Interactive menu
@@ -304,6 +340,7 @@ ${CYAN}Quick switches:${NC}
   easyeffects-skin glass-future
   easyeffects-skin cyberpunk
   easyeffects-skin woodgrain
+  easyeffects-skin easyamp
 
 EOF
 }
@@ -335,7 +372,7 @@ main() {
         help|-h|--help)
             show_usage
             ;;
-        onkyo-green|red-black|glass-future|cyberpunk|woodgrain)
+        onkyo-green|red-black|glass-future|cyberpunk|woodgrain|easyamp)
             # Quick switch - skin name as direct command
             apply_skin "$1"
             ;;
