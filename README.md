@@ -2,21 +2,61 @@
 
 **WinAmp-style skins for Easy Effects on Linux!**
 
-Transform your Easy Effects interface with custom themes inspired by classic audio equipment and modern design aesthetics. Just like WinAmp skins, but for your Linux audio processing!
+Custom themes for Easy Effects inspired by classic audio equipment and modern design aesthetics — just like WinAmp skins, but for your Linux audio processing.
 
 ![VonHoltenCodes](https://img.shields.io/badge/VonHoltenCodes-Custom%20Skins-blueviolet)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 ![Platform](https://img.shields.io/badge/Platform-Linux-blue)
 
-> ⚠️ **EasyEffects version compatibility**
-> These skins target **EasyEffects 7.x (GTK4)**, which is styled with GTK CSS.
-> **EasyEffects 8.0+ was rewritten in Qt6/QML (Kirigami)** and does **not** read GTK
-> CSS themes — the skins on this `main` branch will not apply to 8.x. QML-based
-> theming for 8.x is being developed on the [`ee8-qml`](../../tree/ee8-qml) branch.
-> If you're on 7.x, stay on this branch and consider pinning EasyEffects so a Flatpak
-> update doesn't move you to 8.x.
+## ⚠️ Which EasyEffects do you have? (this matters)
 
-## 🎮 Interactive Skin Manager
+EasyEffects **8.0 was rewritten from GTK4 to Qt6/QML (Kirigami)** and the two lines
+need completely different skins. Check with `flatpak info com.github.wwmm.easyeffects`.
+
+| Your EasyEffects | Skin type | Where |
+|---|---|---|
+| **8.0+** (Qt/QML) — current Flathub | KDE color schemes (`.colors`) | **this `main` branch → [`qml-skins/`](qml-skins/)** |
+| **7.x** (GTK4) — older | GTK CSS skins | **[`legacy-7.x-gtk4`](../../tree/legacy-7.x-gtk4) branch** |
+
+**8.x is the going-forward standard.** The 7.x GTK CSS skins are frozen on the
+`legacy-7.x-gtk4` branch and still work great for anyone still on 7.x — they just
+can't apply to 8.x (no GTK CSS surface anymore).
+
+---
+
+## 🎨 EasyEffects 8.x skins (current standard — BETA)
+
+8.x is themed with **KDE color schemes**, not CSS. Six schemes mirror the color
+identity of the classic skins (Onkyo Green, Red Black, Glass Future, Cyberpunk,
+Woodgrain, EasyAmp). They are **palette-only** — flat recolors, no textures/bevels
+(Qt/Kirigami can't do those, and EE ignores Kvantum). See [`qml-skins/README.md`](qml-skins/README.md)
+for the full research + limitations.
+
+```bash
+# install the color schemes
+cp qml-skins/color-schemes/*.colors ~/.local/share/color-schemes/
+# then: EasyEffects → Preferences → "custom color theme" → pick one
+```
+
+Regenerate from source colors with `qml-skins/generate-colors.sh`. The spectrum
+graph has its own color controls (Preferences → spectrum → "User" theme).
+
+> Status: schemes install where EE 8.2.4 reads them; **in-app visual polish is
+> still being tuned**. Feedback/PRs welcome.
+
+---
+
+## 🕹️ EasyEffects 7.x skins (legacy GTK4 line)
+
+The original WinAmp-style GTK CSS skins — beveled chrome, woodgrain texture, glass
+blur, neon glow — live on the **[`legacy-7.x-gtk4`](../../tree/legacy-7.x-gtk4)**
+branch with their interactive `easyeffects-skin` manager. The same skin files are
+also kept in this branch's `skins/` for reference, but **7.x users should use the
+legacy branch** (it has the matching installer/manager and screenshots).
+
+The rest of this README documents that 7.x GTK CSS workflow.
+
+## 🎮 Interactive Skin Manager (7.x)
 
 Easy-to-use interactive menu for switching skins on the fly:
 
