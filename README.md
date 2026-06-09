@@ -8,6 +8,14 @@ Transform your Easy Effects interface with custom themes inspired by classic aud
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 ![Platform](https://img.shields.io/badge/Platform-Linux-blue)
 
+> ⚠️ **EasyEffects version compatibility**
+> These skins target **EasyEffects 7.x (GTK4)**, which is styled with GTK CSS.
+> **EasyEffects 8.0+ was rewritten in Qt6/QML (Kirigami)** and does **not** read GTK
+> CSS themes — the skins on this `main` branch will not apply to 8.x. QML-based
+> theming for 8.x is being developed on the [`ee8-qml`](../../tree/ee8-qml) branch.
+> If you're on 7.x, stay on this branch and consider pinning EasyEffects so a Flatpak
+> update doesn't move you to 8.x.
+
 ## 🎮 Interactive Skin Manager
 
 Easy-to-use interactive menu for switching skins on the fly:
@@ -80,7 +88,7 @@ Easy-to-use interactive menu for switching skins on the fly:
 
 ## 📋 Requirements
 
-- **Easy Effects** (installed via Flatpak)
+- **Easy Effects 7.x** (installed via Flatpak) — **not** 8.0+, which uses Qt/QML and ignores GTK CSS
 - **Linux** (tested on Pop!_OS 22.04, should work on most distros)
 - **GTK4** support
 - **Bash** shell
