@@ -4,9 +4,31 @@ EasyEffects 8.0 dropped GTK4 and was rewritten in **Qt6 / QML / Kirigami**. The
 GTK CSS skins on `main` have no surface to attach to in 8.x. This is the research
 into what skinning *is* possible in 8.x and how it maps to our existing skins.
 
-> Research date: 2026-06-09. Verified against EE master CHANGELOG + source (8.0.0
-> → 8.1.x) and maintainer issues. EE 8.x is **not installed** on this machine
-> (we run 7.2.5), so the source-level findings below are not yet hands-on tested.
+> Research date: 2026-06-09. Verified against EE master CHANGELOG + source AND
+> **hands-on against EE 8.2.4** installed on this machine (KDE runtime 6.10).
+> Note: flathub pruned 7.2.5, so a flatpak downgrade back to it is not possible —
+> 7.x config is backed up at `~/easyeffects-7.2.5-backup-20260609-152200/`.
+
+## ✅ Hands-on confirmed on EE 8.2.4
+
+- **App-chrome skin hook = KDE `.colors` files in `~/.local/share/color-schemes/`.**
+  The flatpak's sandbox permissions are exactly:
+  `xdg-data/color-schemes:ro` + `xdg-config/kdeglobals:ro` + `xdg-config/gtk-3.0:ro`.
+  So it reads color schemes from the host `~/.local/share/color-schemes/` (already
+  exists — holds `CosmicDark.colors`, `CosmicLight.colors`). Our skins drop here
+  and appear in Preferences → "custom color theme". `kdeglobals` records the active
+  selection. **This is the definitive app-wide skin mechanism.**
+- **Most settings still live in a GSettings keyfile**:
+  `~/.var/app/com.github.wwmm.easyeffects/config/glib-2.0/settings/keyfile`
+  (plugins, window size, devices, EQ bands, last preset). Still script-editable.
+- **Graph/spectrum colors are NOT in GSettings** (no schema keys for color/graph/
+  spectrum). They use the new `Db*` backend serialized under
+  `~/.var/app/com.github.wwmm.easyeffects/config/easyeffects/db/`. That dir is
+  **empty until a graph color is changed from default** — so to capture the exact
+  file/format, toggle a graph color in the running UI and diff `db/`. (Still TODO.)
+- **Migration is destructive-ish**: launching 8.x moved presets/IRS from
+  `config/easyeffects/` to `data/easyeffects/` and trashed the old dirs. The old
+  GTK CSS themes still sit in `config/gtk-4.0/themes/` but are inert. (Backup first.)
 
 ## How appearance works in EE 8.x — two independent layers
 
