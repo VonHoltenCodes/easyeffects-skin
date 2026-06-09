@@ -1,0 +1,11 @@
+[Graph]
+colorScheme=dark
+colorTheme=userDefined
+backgroundColor=20,25,40
+plotAreaBackgroundColor=36,41,56
+seriesColors=100,150,255
+labelTextColor=208,225,249
+labelBackgroundColor=36,41,56
+borderColors=100,150,255
+lineWidth=2
+gridVisible=true

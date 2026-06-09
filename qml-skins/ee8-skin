@@ -1,0 +1,106 @@
+#!/bin/bash
+# ============================================================
+# ee8-skin — EasyEffects 8.x skin manager
+#
+# An 8.x "skin" = two coordinated pieces:
+#   1. app chrome  -> a KDE color scheme (.colors) selected via
+#                     kdeglobals [General] ColorScheme=
+#   2. spectrum    -> db/graphrc (full custom graph colors)
+# This applies BOTH in one shot and restarts EasyEffects.
+#
+# Requires (one-time, this script applies it if missing):
+#   flatpak override --user --nofilesystem=xdg-config/kdeglobals \
+#       com.github.wwmm.easyeffects
+# so EE gets a private, writable kdeglobals and the app scheme
+# persists across restarts.
+# ============================================================
+set -euo pipefail
+
+APP=com.github.wwmm.easyeffects
+SELF_DIR="$(cd "$(dirname "$0")" && pwd)"
+SCHEMES_SRC="$SELF_DIR/color-schemes"
+GRAPH_SRC="$SELF_DIR/graphrc"
+SCHEMES_DST="$HOME/.local/share/color-schemes"
+CFG="$HOME/.var/app/$APP/config"
+KDEGLOBALS="$CFG/kdeglobals"
+GRAPHRC="$CFG/easyeffects/db/graphrc"
+
+# skin slug -> KDE color scheme display name (matches Name= in the .colors)
+declare -A NAME=(
+  [onkyo-green]="Onkyo Green"
+  [red-black]="Red Black"
+  [glass-future]="Glass Future"
+  [cyberpunk]="Cyberpunk"
+  [woodgrain]="Woodgrain"
+  [easyamp]="EasyAmp"
+)
+
+SKINS="onkyo-green red-black glass-future cyberpunk woodgrain easyamp"
+
+die() { echo "error: $*" >&2; exit 1; }
+
+ensure_override() {
+  if ! flatpak override --user --show "$APP" 2>/dev/null | grep -q '!xdg-config/kdeglobals'; then
+    echo "  applying one-time flatpak override (writable kdeglobals)..."
+    flatpak override --user --nofilesystem=xdg-config/kdeglobals "$APP"
+  fi
+}
+
+install_schemes() {
+  mkdir -p "$SCHEMES_DST"
+  cp "$SCHEMES_SRC"/*.colors "$SCHEMES_DST"/ 2>/dev/null || true
+}
+
+set_app_scheme() {  # $1 = display name
+  mkdir -p "$(dirname "$KDEGLOBALS")"
+  # the flatpak may have left a read-only 0-byte kdeglobals stub; we own it, make it writable
+  [ -e "$KDEGLOBALS" ] && chmod u+w "$KDEGLOBALS" 2>/dev/null || true
+  # set/replace [General] ColorScheme= without clobbering other keys
+  if [ -f "$KDEGLOBALS" ] && grep -q '^\[General\]' "$KDEGLOBALS"; then
+    if grep -q '^ColorScheme=' "$KDEGLOBALS"; then
+      sed -i "s|^ColorScheme=.*|ColorScheme=$1|" "$KDEGLOBALS"
+    else
+      sed -i "/^\[General\]/a ColorScheme=$1" "$KDEGLOBALS"
+    fi
+  else
+    printf '[General]\nColorScheme=%s\n' "$1" >> "$KDEGLOBALS"
+  fi
+}
+
+cmd_list() {
+  echo "Available skins:"
+  for s in $SKINS; do echo "  - $s  (${NAME[$s]})"; done
+}
+
+cmd_current() {
+  echo "App color scheme: $(grep -h '^ColorScheme=' "$KDEGLOBALS" 2>/dev/null | head -1 | cut -d= -f2- || echo '(none)')"
+  echo "Spectrum (graphrc):"; sed -n 's/^/  /p' "$GRAPHRC" 2>/dev/null || echo "  (default)"
+}
+
+cmd_apply() {
+  local skin="$1"
+  [[ " $SKINS " == *" $skin "* ]] || die "unknown skin '$skin' (try: $SKINS)"
+  [ -f "$GRAPH_SRC/$skin.graphrc" ] || die "missing $GRAPH_SRC/$skin.graphrc"
+  [ -f "$SCHEMES_SRC/$skin.colors" ] || die "missing $SCHEMES_SRC/$skin.colors"
+
+  echo "Applying skin: $skin (${NAME[$skin]})"
+  ensure_override
+  install_schemes
+  echo "  stopping EasyEffects..."
+  flatpak kill "$APP" 2>/dev/null || true; sleep 2
+  echo "  writing spectrum colors -> db/graphrc"
+  mkdir -p "$(dirname "$GRAPHRC")"
+  cp "$GRAPH_SRC/$skin.graphrc" "$GRAPHRC"
+  echo "  setting app color scheme -> ${NAME[$skin]}"
+  set_app_scheme "${NAME[$skin]}"
+  echo "  restarting EasyEffects..."
+  nohup flatpak run "$APP" >/dev/null 2>&1 &
+  echo "Done. If the window was open, it will reopen with the new skin."
+}
+
+case "${1:-}" in
+  ""|list)   cmd_list ;;
+  current)   cmd_current ;;
+  apply)     shift; cmd_apply "${1:?usage: ee8-skin apply <skin>}" ;;
+  *)         cmd_apply "$1" ;;   # allow: ee8-skin cyberpunk
+esac
