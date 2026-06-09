@@ -82,6 +82,23 @@ The 8.x versions will be **flat recolors** capturing each skin's *color identity
 - Every skin's **spectrum colors** → a `DbGraph` User-theme preset. This is
   actually *more* capable than 7.x (settable bg, plot bg, multi-series colors).
 
+## Build status (color schemes)
+
+`generate-colors.sh` emits 6 KDE color schemes into `color-schemes/` — one per
+7.x skin, mapping each skin's color identity (extracted from its CSS) onto the
+KDE palette (`Window/View/Button/Selection/Header` + WM). Install:
+
+```bash
+cp qml-skins/color-schemes/*.colors ~/.local/share/color-schemes/
+# then EasyEffects -> Preferences -> "custom color theme" -> pick it
+```
+
+Verified hands-on: files land where EE 8.2.4 reads them and the app launches
+clean. **Not yet verified: the in-app visual render** — this box's compositor
+isn't wlroots (no `grim` capture) and the flatpak `kdeglobals` is read-only, so
+the picker selection + look must be eyeballed at the GUI. **These schemes are
+BETA / palette-only** (no texture — see Limitations).
+
 ## Plan / checklist
 - [ ] Install EE 8.x somewhere (separate Flatpak ref or a VM) to test hands-on —
       do NOT replace the working 7.2.5 on this box.
